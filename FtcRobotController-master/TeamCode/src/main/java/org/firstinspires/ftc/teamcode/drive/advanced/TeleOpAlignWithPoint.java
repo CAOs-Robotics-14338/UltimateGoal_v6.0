@@ -28,7 +28,7 @@ import org.firstinspires.ftc.teamcode.util.DashboardUtil;
  */
 @Config
 @TeleOp(group = "advanced")
-public class OrientTest extends LinearOpMode {
+public class TeleOpAlignWithPoint extends LinearOpMode {
 
     public static double DRAWING_TARGET_RADIUS = 2;
 
