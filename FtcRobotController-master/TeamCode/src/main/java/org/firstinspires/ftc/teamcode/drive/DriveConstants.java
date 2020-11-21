@@ -11,7 +11,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints;
  *
  * TODO: Tune or adjust the following constants to fit your robot. Note that the non-final
  * fields may also be edited through the dashboard (connect to the robot's WiFi network and
- * navigate to https://192.168.49.1:8080/dash). Make sure to save the values here after you
+ * navigate to https://192.168.43.1:8080/dash). Make sure to save the values here after you
  * adjust them in the dashboard; **config variable changes don't persist between app restarts**.
  *
  * These are not the only parameters; some are located in the localizer classes, drive base classes,
@@ -30,7 +30,7 @@ public class DriveConstants {
      * Set the first flag appropriately. If using the built-in motor velocity PID, update
      * MOTOR_VELO_PID with the tuned coefficients from DriveVelocityPIDTuner.
      */
-    public static final boolean RUN_USING_ENCODER = true;
+    public static final boolean RUN_USING_ENCODER = false;
     public static final PIDCoefficients MOTOR_VELO_PID = null;
 
     /*
@@ -84,8 +84,8 @@ public class DriveConstants {
 
      */
     public static DriveConstraints BASE_CONSTRAINTS = new DriveConstraints(
-            51.452753153081346, 51.452753153081346, 0.0,
-            Math.toRadians(360), Math.toRadians(360), 0.0
+            30, 30, 0.0,
+            Math.toRadians(180), Math.toRadians(180), 0.0
     );
 
 
