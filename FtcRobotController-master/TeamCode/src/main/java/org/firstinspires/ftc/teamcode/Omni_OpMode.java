@@ -52,7 +52,7 @@ import com.qualcomm.robotcore.util.Range;
  */
 
 @TeleOp(name="Omni OpMode", group="Linear Opmode")
-
+@Disabled
 public class Omni_OpMode extends LinearOpMode {
 
     // Declare OpMode members.
