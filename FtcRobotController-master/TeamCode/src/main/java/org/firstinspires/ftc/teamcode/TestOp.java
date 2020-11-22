@@ -51,7 +51,6 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name="TeleOP Test", group="Iterative Opmode")
-@Disabled
 public class TestOp extends OpMode
 {
     // Declare OpMode members.
@@ -75,7 +74,7 @@ public class TestOp extends OpMode
         FrontLeftMotor = hardwareMap.get(DcMotor.class, "front_left_drive");
         BackRightMotor  = hardwareMap.get(DcMotor.class, "back_right_drive");
         BackLeftMotor = hardwareMap.get(DcMotor.class, "back_left_drive");
-        ShooterMotor = hardwareMap.get(DcMotor.class, "shooter_motor");
+        //ShooterMotor = hardwareMap.get(DcMotor.class, "shooter_motor");
 
 
 
@@ -106,9 +105,9 @@ public class TestOp extends OpMode
      */
     @Override
     public void loop() {
-        double x = gamepad1.left_stick_x;
-        double y = -gamepad1.left_stick_y;
-        double z = gamepad1.right_stick_x;
+        double x = -gamepad1.left_stick_x;
+        double y = gamepad1.left_stick_y;
+        double z = -gamepad1.right_stick_x;
 
 
 
@@ -118,6 +117,7 @@ public class TestOp extends OpMode
         boolean A_button = gamepad2.a;
         telemetry.addData("Use left thumbstick on gamepad 2 to adjust the shooting motor power", "\nPower: " + y2);
         telemetry.addLine("\nLeft bumper will set motor to 50% power, right = 100%.  Hold A to reverse direction.");
+        /*
         if(y2 != 0) {
             ShooterMotor.setPower(y2);
         }
@@ -143,6 +143,7 @@ public class TestOp extends OpMode
             ShooterMotor.setPower(0);
         }
 
+*/
 
         holonomicDrive.teleopDrive(x,y,z);
         // Show the elapsed game time and wheel power.
