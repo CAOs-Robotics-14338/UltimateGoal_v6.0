@@ -33,8 +33,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.teamcode.util.Encoder;
 
 /**
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -51,11 +54,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name="TeleOP Test", group="Iterative Opmode")
-@Disabled
 public class TestOp extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
+    private Encoder leftEncoder, rightEncoder, frontEncoder;
     private DcMotor  FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor, ShooterMotor;
     //private Servo ;
 
@@ -75,11 +78,16 @@ public class TestOp extends OpMode
         FrontLeftMotor = hardwareMap.get(DcMotor.class, "front_left_drive");
         BackRightMotor  = hardwareMap.get(DcMotor.class, "back_right_drive");
         BackLeftMotor = hardwareMap.get(DcMotor.class, "back_left_drive");
-        ShooterMotor = hardwareMap.get(DcMotor.class, "shooter_motor");
+        //ShooterMotor = hardwareMap.get(DcMotor.class, "shooter_motor");
 
 
 
         holonomicDrive = new HolonomicDrive(FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor);
+        leftEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "leftEncoder"));
+        rightEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "rightEncoder"));
+        frontEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "frontEncoder"));
+
+        // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
 
 
         // Tell the driver that initialization is complete.
@@ -106,9 +114,9 @@ public class TestOp extends OpMode
      */
     @Override
     public void loop() {
-        double x = gamepad1.left_stick_x;
-        double y = -gamepad1.left_stick_y;
-        double z = gamepad1.right_stick_x;
+        double x = -gamepad1.left_stick_x;
+        double y = gamepad1.left_stick_y;
+        double z = -gamepad1.right_stick_x;
 
 
 
@@ -116,8 +124,11 @@ public class TestOp extends OpMode
         boolean Left_Bumper = gamepad2.left_bumper;
         boolean Right_Bumper = gamepad2.right_bumper;
         boolean A_button = gamepad2.a;
+
+        /*
         telemetry.addData("Use left thumbstick on gamepad 2 to adjust the shooting motor power", "\nPower: " + y2);
         telemetry.addLine("\nLeft bumper will set motor to 50% power, right = 100%.  Hold A to reverse direction.");
+
         if(y2 != 0) {
             ShooterMotor.setPower(y2);
         }
@@ -144,9 +155,14 @@ public class TestOp extends OpMode
         }
 
 
+         */
+
         holonomicDrive.teleopDrive(x,y,z);
         // Show the elapsed game time and wheel power.
-        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        //telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.addData("Left Encoder Ticks : ", leftEncoder.getCurrentPosition());
+        telemetry.addData("Right Encoder Ticks : ", rightEncoder.getCurrentPosition());
+        telemetry.addData("Back Encoder Ticks : ", frontEncoder.getCurrentPosition());
     }
 
     /*
