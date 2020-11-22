@@ -50,12 +50,12 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="TeleOP Test", group="Iterative Opmode")
-public class TestOp extends OpMode
+@TeleOp(name="TeleOP Test Without Mechanum", group="Iterative Opmode")
+public class TestOpNoMech extends OpMode
 {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor  FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor, ShooterMotor;
+    private DcMotor  FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor, ShooterMotor1, ShooterMotor2;
     //private Servo ;
 
     HolonomicDrive holonomicDrive;
@@ -69,16 +69,20 @@ public class TestOp extends OpMode
 
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
-        // step (using the FTC Robot Controller app on the phone).
+        // step (using the FTC Robot Controller app on the phone)
+
+       /*
         FrontRightMotor  = hardwareMap.get(DcMotor.class, "front_right_drive");
         FrontLeftMotor = hardwareMap.get(DcMotor.class, "front_left_drive");
         BackRightMotor  = hardwareMap.get(DcMotor.class, "back_right_drive");
         BackLeftMotor = hardwareMap.get(DcMotor.class, "back_left_drive");
-        //ShooterMotor = hardwareMap.get(DcMotor.class, "shooter_motor");
+        */
+        ShooterMotor1 = hardwareMap.get(DcMotor.class, "shooter_motor_1");
+        ShooterMotor2 = hardwareMap.get(DcMotor.class, "shooter_motor_2");
 
 
 
-        holonomicDrive = new HolonomicDrive(FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor);
+        //holonomicDrive = new HolonomicDrive(FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor);
 
 
         // Tell the driver that initialization is complete.
@@ -115,17 +119,58 @@ public class TestOp extends OpMode
         boolean Left_Bumper = gamepad2.left_bumper;
         boolean Right_Bumper = gamepad2.right_bumper;
         boolean A_button = gamepad2.a;
+        boolean B_button = gamepad2.b;
+
         telemetry.addData("Use left thumbstick on gamepad 2 to adjust the shooting motor power", "\nPower: " + y2);
         telemetry.addLine("\nLeft bumper will set motor to 50% power, right = 100%.  Hold A to reverse direction.");
-        /*
-        if(y2 != 0) {
-            ShooterMotor.setPower(y2);
+        if(y2 != 0)
+        {
+            ShooterMotor1.setPower(y2);
+            ShooterMotor2.setPower(y2);
+        }
+
+        if(Right_Bumper)
+        {
+            if(A_button)
+            {
+                ShooterMotor1.setPower(-1);
+            }
+            else
+            {
+                ShooterMotor1.setPower(1);
+            }
+        }
+
+        if(Left_Bumper)
+        {
+            if(B_button)
+            {
+
+                ShooterMotor2.setPower(-1);
+            }
+            else
+            {
+                ShooterMotor2.setPower(1);
+            }
+
+            }
+
+        else
+        {
+            ShooterMotor1.setPower(0);
+            ShooterMotor2.setPower(0);
+        }
+
+        /*if(y2 != 0) {
+
+            //ShooterMotor1.setPower(y2);
+            //ShooterMotor2.setPower(y2);
         }
 
         else if(Left_Bumper)
         {
             if (A_button) {
-                ShooterMotor.setPower(-0.5);
+                ShooterMotor1.setPower(-0.5);
             } else {
                 ShooterMotor.setPower(0.5);
             }
@@ -142,10 +187,11 @@ public class TestOp extends OpMode
         {
             ShooterMotor.setPower(0);
         }
-        */
+
+         */
 
 
-        holonomicDrive.teleopDrive(x,y,z);
+        //holonomicDrive.teleopDrive(x,y,z);
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
     }
