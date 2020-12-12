@@ -17,7 +17,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
  * <p>
  * See lines 42-57.
  */
-
+@Disabled
 @TeleOp(group = "advanced")
 public class TeleOpFieldCentric extends LinearOpMode {
     @Override
