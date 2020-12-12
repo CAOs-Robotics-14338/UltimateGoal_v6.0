@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
  * <p>
  * This opmode is essentially just LocalizationTest.java with a few additions and comments.
  */
-@Disabled
+
 @TeleOp(group = "advanced")
 public class TeleOpDrive extends LinearOpMode {
     @Override
