@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f2bed4ba-ab5f-4985-b16e-22734381032d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Wobble_OpMode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/WobbleGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/WobbleGoal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Wobble_OpMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Wobble_OpMode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode" />
-    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -128,8 +131,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="128" y="25" key="#Project_Structure" timestamp="1613253708812">
+      <screen x="0" y="25" width="1280" height="708" />
+    </state>
+    <state x="128" y="25" key="#Project_Structure/0.25.1280.708@0.25.1280.708" timestamp="1613253708812" />
     <state x="104" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1613253384102">
       <screen x="0" y="25" width="1280" height="708" />
     </state>
@@ -139,9 +147,10 @@
       <screen x="0" y="25" width="1280" height="708" />
     </state>
     <state x="435" y="130" key="AndroidProcessChooserDialog/0.25.1280.708@0.25.1280.708" timestamp="1613253350130" />
-    <state x="141" y="25" width="997" height="708" key="SettingsEditor" timestamp="1613253484905">
-      <screen x="0" y="25" width="1280" height="708" />
+    <state x="0" y="34" width="1260" height="700" key="SettingsEditor" timestamp="1613255151206">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="0" y="34" width="1260" height="700" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1613255151206" />
     <state x="141" y="25" width="997" height="708" key="SettingsEditor/0.25.1280.708@0.25.1280.708" timestamp="1613253484905" />
     <state x="305" y="58" width="670" height="676" key="search.everywhere.popup" timestamp="1613251107091">
       <screen x="0" y="25" width="1280" height="709" />

@@ -21,6 +21,7 @@ public class WobbleGoal {
     }
     //Methods
     /***SERVO METHODS***/
+
     public void setClaw(int pos) {
         this.claw.setPosition(pos);
     }
@@ -44,7 +45,7 @@ public class WobbleGoal {
     public void lowerWobbleGoal(){
         linSlide.setPower(-1*slidePower);
     }
-
+    public void stopGoal(){ linSlide.setPower(0);}
     public void deliverWobbleGoal(){
         //lower linear slide  timed??
         //move claw to its stored position

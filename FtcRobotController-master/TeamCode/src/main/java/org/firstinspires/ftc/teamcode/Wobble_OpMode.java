@@ -80,7 +80,24 @@ public class Wobble_OpMode extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            wobbleGoal.
+            if (gamepad1.y == true){
+                wobbleGoal.raiseWobbleGoal();
+            }
+            else if (gamepad1.x == true){
+               wobbleGoal.lowerWobbleGoal();
+            }
+            else{
+                wobbleGoal.stopGoal();
+            }
+
+            /************SERVO ADVENTURES************/
+            if (gamepad1.right_bumper){
+                wobbleGoal.activateClaw();
+            }
+            else if (gamepad1.left_bumper){
+                wobbleGoal.storeClaw();
+            }
+
         }
     }
 }
