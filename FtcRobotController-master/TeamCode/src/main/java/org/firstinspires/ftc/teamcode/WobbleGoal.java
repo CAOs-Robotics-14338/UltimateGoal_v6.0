@@ -11,8 +11,8 @@ public class WobbleGoal {
     CRServo claw;
     /*** CLAW Positions ***/
     int neutral = 0;
-    int grab = ;
-    int store = ;
+    int grab = 0.5;
+    int store = 1;
 
     //Constructors
     public WobbleGoal(DcMotor linearSlide, CRServo servo){
