@@ -8,7 +8,7 @@ public class WobbleGoal {
     DcMotor linSlide;
     double slidePower = 1.0;
         /*Servos*/
-    CRServo claw;
+    Servo claw;
     /*** CLAW Positions ***/
     int neutral = 0;
     int grab = 0.5;
