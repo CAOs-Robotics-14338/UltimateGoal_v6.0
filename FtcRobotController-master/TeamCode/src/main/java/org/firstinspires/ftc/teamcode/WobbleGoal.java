@@ -10,12 +10,12 @@ public class WobbleGoal {
         /*Servos*/
     Servo claw;
     /*** CLAW Positions ***/
-    int neutral = 0;
-    int grab = 0.5;
-    int store = 1;
+    double neutral = 0;
+    double grab = 0.5;
+    double store = 1;
 
     //Constructors
-    public WobbleGoal(DcMotor linearSlide, CRServo servo){
+    public WobbleGoal(DcMotor linearSlide, Servo servo){
         linSlide = linearSlide;
         intake = claw;
     }
