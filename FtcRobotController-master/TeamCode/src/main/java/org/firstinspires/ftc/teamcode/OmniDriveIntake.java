@@ -57,11 +57,15 @@ public class OmniDriveIntake extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
+    /* DRIVE */
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor centerDrive = null;
+    /* INTAKE */
+    private DcMotor conveyorBelt = null;
 
     private CRServo intake = null;
+
 
     @Override
     public void runOpMode() {
@@ -71,17 +75,25 @@ public class OmniDriveIntake extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
+        /* DRIVE */
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         centerDrive = hardwareMap.get(DcMotor.class, "center_drive");
+
+        /* INTAKE */
+        conveyorBelt = hardwareMap.get(DcMotor.class, "belt");
 
         intake = hardwareMap.get(CRServo.class, "intake");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
+        /* DRIVE */
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
         centerDrive.setDirection(DcMotor.Direction.FORWARD);
+
+       /* INTAKE */
+        conveyorBelt.setDirection(DcMotor.Direction.FORWARD);
 
         intake.setDirection(CRServo.Direction.FORWARD); //Setting up so positive is intaking but negative is pushing the rings away
         // Wait for the game to start (driver presses PLAY)
@@ -92,9 +104,13 @@ public class OmniDriveIntake extends LinearOpMode {
         while (opModeIsActive()) {
 
             // Setup a variable for each drive wheel to save power level for telemetry
+            /*DRIVE*/
             double leftPower;
             double rightPower;
             double centerPower;
+
+            /*INTAKE*/
+            double conveyorPower = 1;
 
             double intakePower = 1;
 
@@ -107,6 +123,7 @@ public class OmniDriveIntake extends LinearOpMode {
             double turn  =  gamepad1.right_stick_x;
             leftPower    = Range.clip(drive + turn, -1.0, 1.0) ;
             rightPower   = Range.clip(drive - turn, -1.0, 1.0) ;
+
 
             centerPower = gamepad1.left_stick_x;
             // Tank Mode uses one stick to control each wheel.
@@ -121,9 +138,11 @@ public class OmniDriveIntake extends LinearOpMode {
 
             if (gamepad1.a == true){
                 intake.setPower(intakePower);
+                conveyorBelt.setPower(conveyorPower);
             }
             else if (gamepad1.b == true){
                 intake.setPower(-intakePower);
+                conveyorBelt.setPower(-conveyorPower);
             }
             else{
                 intake.setPower(0);
