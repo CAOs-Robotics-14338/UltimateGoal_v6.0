@@ -29,7 +29,6 @@
 
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -52,9 +51,9 @@ import com.qualcomm.robotcore.util.Range;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Omni w Intake OpMode", group="Linear Opmode")
+@TeleOp(name="Drive Intake Launcher OpMode", group="Linear Opmode")
 
-public class OmniDriveIntake extends LinearOpMode {
+public class DriveIntakeLauncher extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -67,6 +66,9 @@ public class OmniDriveIntake extends LinearOpMode {
 
     private CRServo intake = null;
 
+    /* LAUNCHER */
+    private DcMotor launchLeft = null;
+    private DcMotor launchRight = null;
 
     @Override
     public void runOpMode() {
@@ -86,6 +88,11 @@ public class OmniDriveIntake extends LinearOpMode {
 
         intake = hardwareMap.get(CRServo.class, "intake");
 
+        /* LAUNCHER */
+        launchLeft = hardwareMap.get(DcMotor.class, "launch_left");;
+        launchRight = hardwareMap.get(DcMotor.class, "launch_right");;
+
+
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         /* DRIVE */
@@ -97,6 +104,11 @@ public class OmniDriveIntake extends LinearOpMode {
         conveyorBelt.setDirection(DcMotor.Direction.FORWARD);
 
         intake.setDirection(CRServo.Direction.FORWARD); //Setting up so positive is intaking but negative is pushing the rings away
+
+        /* LAUNCHER */
+        launchLeft.setDirection(DcMotor.Direction.FORWARD);
+        launchRight.setDirection(DcMotor.Direction.REVERSE);
+
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
@@ -114,6 +126,8 @@ public class OmniDriveIntake extends LinearOpMode {
             double conveyorPower = 1;
 
             double intakePower = 1;
+
+            /*LAUNCHER*/
 
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
@@ -154,6 +168,19 @@ public class OmniDriveIntake extends LinearOpMode {
             }
             else if (gamepad1.y == true){
                 conveyorBelt.setPower(-conveyorPower);
+            }
+
+            if (gamepad1.left_trigger > 0){
+                launchRight.setPower(gamepad1.left_trigger);
+                launchLeft.setPower(gamepad1.left_trigger);
+            }
+            else if (gamepad1.right_trigger > 0){
+                launchLeft.setPower(gamepad1.right_trigger);
+                launchRight.setPower(gamepad1.right_trigger);
+            }
+            else{
+                launchLeft.setPower(0);
+                launchRight.setPower(0);
             }
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
