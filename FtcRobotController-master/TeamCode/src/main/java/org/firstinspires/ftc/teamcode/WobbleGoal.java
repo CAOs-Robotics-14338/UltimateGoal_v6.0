@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class WobbleGoal {
     // Set up Hardware Devices
@@ -17,12 +18,12 @@ public class WobbleGoal {
     //Constructors
     public WobbleGoal(DcMotor linearSlide, Servo servo){
         linSlide = linearSlide;
-        intake = claw;
+         claw = servo;
     }
     //Methods
     /***SERVO METHODS***/
 
-    public void setClaw(int pos) {
+    public void setClaw(double pos) {
         this.claw.setPosition(pos);
     }
 

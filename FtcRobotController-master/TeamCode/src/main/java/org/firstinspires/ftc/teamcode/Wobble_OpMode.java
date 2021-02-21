@@ -37,6 +37,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.WobbleGoal;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 /**
@@ -73,7 +74,7 @@ public class Wobble_OpMode extends LinearOpMode {
         linearSlide  = hardwareMap.get(DcMotor.class, "slide");
         servo = hardwareMap.get(Servo.class, "claw");
 
-        wobbleGoal = WobbleGoal(linearSlide, servo);
+        wobbleGoal = new WobbleGoal(linearSlide, servo);
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
