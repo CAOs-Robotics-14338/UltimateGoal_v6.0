@@ -83,10 +83,11 @@ public class TestOp extends OpMode
 
 
         holonomicDrive = new HolonomicDrive(FrontRightMotor, FrontLeftMotor, BackRightMotor, BackLeftMotor);
-        leftEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "leftEncoder"));
-        rightEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "rightEncoder"));
-        frontEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "frontEncoder"));
-
+        leftEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "back_right_drive"));
+        rightEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "front_left_drive"));
+        frontEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "front_right_drive"));
+        frontEncoder.setDirection(Encoder.Direction.REVERSE);
+        leftEncoder.setDirection(Encoder.Direction.REVERSE);
         // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
 
 
